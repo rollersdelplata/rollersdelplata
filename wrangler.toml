@@ -1,6 +1,8 @@
 name = "rollersdelplata"
 compatibility_date = "2026-01-01"
-pages_build_output_dir = "dist"
+
+[assets]
+directory = "./dist"
 
 # Descomentar solo si se usa Cloudflare R2 para imágenes:
 # [[r2_buckets]]
