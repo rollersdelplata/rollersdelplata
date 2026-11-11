@@ -20,7 +20,7 @@ Eres el subagente responsable de preparar el repositorio en **GitHub**, automati
    - Mantén actualizado `.env.example` con todas las variables requeridas documentadas.
 2. **Optimización para Cloudflare Pages y Workers Free Tier**:
    - Configura `public/_headers` (seguridad + caché inmutable de 1 año en `/assets/*`) y `public/_redirects` (para rutas de SPAs).
-   - Configura `wrangler.toml` de forma limpia cuando el proyecto requiera Pages Functions, Workers o Cloudflare R2.
+   - Configura `wrangler.toml` usando **siempre** `[assets]` con `directory = "./dist"` (y **nunca** `pages_build_output_dir = "dist"`), ya que el comando por defecto de Cloudflare (`npx wrangler deploy` en Wrangler v4) exige `[assets] directory = "./dist"` para desplegar sitios estáticos sin errores de entry-point.
    - Prioriza siempre que los activos estáticos sean servidos directamente por Cloudflare Pages (ancho de banda y peticiones ilimitadas gratis) sin consumir la cuota de 100,000 invocaciones/día de Workers.
 3. **Cloudflare R2 para Alto Volumen de Imágenes**:
    - Cuando un proyecto requiera más de 1 GB de imágenes o muchísimo tráfico de lectura, configura el binding de R2 (`IMAGES_BUCKET`) y la Pages Function de subida con `Cache-Control: public, max-age=31536000, immutable`.

@@ -34,11 +34,15 @@ Agrega `public/_headers` para proteger la web y maximizar la caché estática en
   Cache-Control: public, max-age=31536000, immutable
 ```
 
-### C. Configuración de `wrangler.toml` (Si usa Pages Functions, Workers o R2)
+### C. Configuración de `wrangler.toml` (Workers Static Assets / Pages / R2)
+> **Regla crítica para Wrangler v4 (`npx wrangler deploy`)**: El flujo por defecto de Cloudflare al conectar Git ejecuta `npx wrangler deploy`. **NUNCA uses `pages_build_output_dir = "dist"`** porque falla con `Missing entry-point to Worker script or to assets directory`. Usa **siempre** el bloque `[assets] directory = "./dist"`:
+
 ```toml
 name = "nombre-del-proyecto"
 compatibility_date = "2026-01-01"
-pages_build_output_dir = "dist"
+
+[assets]
+directory = "./dist"
 
 # Descomentar solo si se usa Cloudflare R2 para imágenes:
 # [[r2_buckets]]
