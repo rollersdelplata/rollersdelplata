@@ -1,0 +1,112 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const generos = [
+  {
+    title: 'TELAS BLACK OUT',
+    image: '/images/catalogo/card-blackout.jpg',
+    description:
+      'Ofrece oscuridad, logra privacidad e intimidad, es un buen aislante ayudando a controlar la temperatura.',
+    href: '/catalogo/fotos-cortinas-black-out',
+  },
+  {
+    title: 'TELAS SCREEN 5%',
+    image: '/images/catalogo/card-screen5.jpg',
+    description:
+      'Excelente visión al exterior durante el día, filtra los rayos del sol y optimiza los recursos de climatización frio/calor. No logra total privacidad por la noche.',
+    href: '/catalogo/fotos-cortinas-screen-5',
+  },
+  {
+    title: 'TELAS BLACK OUT TEXTURADO',
+    image: '/images/catalogo/card-blackout-texturado.jpg',
+    description:
+      'Ofrece oscuridad, contamos con diferentes texturas, suaves y rústicas con variedad en tonos, cuenta con las mismas características que tiene el black out vinílico.',
+    href: '/catalogo/fotos-cortinas-black-out-texturado',
+  },
+  {
+    title: 'TELAS TRASLÚCIDAS',
+    image: '/images/catalogo/card-traslucidas.jpg',
+    description:
+      'Permite alcanzar la intimidad y privacidad deseada, aporta decoración, elegancia y luminosidad suave.',
+    href: '/catalogo/fotos-cortinas-traslucidas',
+  },
+];
+---
+
+<Layout title="Rollers del Plata - Catalogo">
+  <!-- Header Title -->
+  <section class="bg-[#eceff1] py-12 px-4 border-b-4 border-[#b0bec5] text-center">
+    <h1 class="font-heading text-4xl sm:text-5xl text-[#212121]">Catalogo</h1>
+  </section>
+
+  <!-- Intro & Muestrario -->
+  <section class="bg-white py-12 px-4">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div class="space-y-4">
+        <h2 class="font-heading text-2xl sm:text-3xl text-[#212121]">
+          Contamos con géneros de excelente calidad
+        </h2>
+        <p class="text-[#212121]/90 leading-relaxed text-sm sm:text-base">
+          Los mismo son elegidos por nuestro equipo, buscando cumplir con la mejor selección dentro del mercado tanto en composición del genero y su textura.
+        </p>
+      </div>
+      <div class="flex justify-center">
+        <img
+          src="/images/catalogo/banner-telas.jpg"
+          alt="Muestrarios de telas Rollers del Plata"
+          class="rounded max-h-72 object-contain"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 Fabric Categories -->
+  <section class="bg-[#eceff1] py-14 px-4">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+      {generos.map((item) => (
+        <div class="flex flex-col sm:flex-row gap-6 items-start bg-white p-5 rounded border border-slate-200 shadow-sm hover:shadow-md transition">
+          <a href={item.href} class="w-full sm:w-52 shrink-0 overflow-hidden rounded">
+            <img
+              src={item.image}
+              alt={item.title}
+              loading="lazy"
+              decoding="async"
+              class="w-full h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </a>
+          <div class="flex flex-col justify-between flex-1 space-y-3">
+            <div>
+              <h3 class="font-heading text-xl font-bold text-[#212121] mb-2">
+                {item.title}
+              </h3>
+              <p class="text-sm sm:text-[15px] text-[#212121]/90 leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+            <a
+              href={item.href}
+              class="inline-flex items-center text-sm font-semibold text-[#212121] hover:underline pt-1"
+            >
+              &lt;-- Conoce mas...
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Catálogo Digital Google Drive Embed -->
+  <section class="bg-white py-12 px-4">
+    <div class="max-w-4xl mx-auto space-y-4 text-center">
+      <h2 class="font-heading text-2xl text-[#212121]">Catálogo Digital de Telas</h2>
+      <div class="w-full h-[520px] sm:h-[680px] rounded overflow-hidden border border-slate-300 shadow-sm">
+        <iframe
+          src="https://drive.google.com/file/d/1GwSYOnYWqM2M1AKrNvs3OPu_LH3lGYsN/preview"
+          title="Catálogo Digital Rollers del Plata"
+          class="w-full h-full border-0"
+          allow="autoplay"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+</Layout>

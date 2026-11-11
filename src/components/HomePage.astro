@@ -1,0 +1,196 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Carousel from './Carousel.astro';
+
+const inicioCarouselImages = [
+  '/images/inicio/carousel-1.jpg',
+  '/images/inicio/carousel-2.jpg',
+  '/images/inicio/carousel-3.jpg',
+  '/images/inicio/carousel-4.jpg',
+  '/images/inicio/carousel-5.jpg',
+  '/images/inicio/carousel-6.jpg',
+  '/images/inicio/carousel-7.jpg',
+];
+
+const generos = [
+  {
+    title: 'TELAS BLACK OUT',
+    image: '/images/catalogo/card-blackout.jpg',
+    description:
+      'Ofrece oscuridad, logra privacidad e intimidad, es un buen aislante ayudando a controlar la temperatura.',
+    href: '/catalogo/fotos-cortinas-black-out',
+  },
+  {
+    title: 'TELAS SCREEN 5%',
+    image: '/images/catalogo/card-screen5.jpg',
+    description:
+      'Excelente visión al exterior durante el día, filtra los rayos del sol y optimiza los recursos de climatización frio/calor. No logra total privacidad por la noche.',
+    href: '/catalogo/fotos-cortinas-screen-5',
+  },
+  {
+    title: 'TELAS BLACK OUT TEXTURADO',
+    image: '/images/catalogo/card-blackout-texturado.jpg',
+    description:
+      'Ofrece oscuridad, contamos con diferentes texturas, suaves y rústicas con variedad en tonos, cuenta con las mismas características que tiene el black out vinílico.',
+    href: '/catalogo/fotos-cortinas-black-out-texturado',
+  },
+  {
+    title: 'TELAS TRASLÚCIDAS',
+    image: '/images/catalogo/card-traslucidas.jpg',
+    description:
+      'Permite alcanzar la intimidad y privacidad deseada, aporta decoración, elegancia y luminosidad suave.',
+    href: '/catalogo/fotos-cortinas-traslucidas',
+  },
+];
+---
+
+<Layout title="Rollers del Plata">
+  <!-- Hero Banner -->
+  <section
+    class="relative h-[340px] sm:h-[380px] flex items-center justify-center text-center px-4 bg-cover bg-center border-b-8 border-[#b0bec5]"
+    style="background-image: url('/images/hero-inicio.jpg');"
+  >
+    <div class="absolute inset-0 bg-[#212121]/55"></div>
+    <div class="relative z-10 max-w-4xl mx-auto text-white space-y-5">
+      <h1 class="font-heading text-3xl sm:text-5xl font-normal tracking-wide">
+        Fabricantes de cortinas enrollables
+      </h1>
+      <p class="text-sm sm:text-base md:text-lg italic font-semibold leading-relaxed max-w-3xl mx-auto">
+        Dedicados hace mas de 10 años en la fabricación de cortinas roller, contando siempre con la mejor calidad en nuestro producto y servicio a nuestros clientes, desde el asesoramiento, el armado de presupuesto ofreciendo la mejor solución.
+      </p>
+    </div>
+  </section>
+
+  <!-- Intro & Carousel Section -->
+  <section class="bg-[#eceff1] py-12 px-4">
+    <div class="max-w-5xl mx-auto text-center space-y-4 mb-10">
+      <h2 class="font-heading text-2xl sm:text-3xl text-[#212121]">
+        Cada vez son más las empresas y comercios que confían en nuestros productos y asesoramiento
+      </h2>
+      <p class="italic text-[#212121]/90 max-w-3xl mx-auto text-sm sm:text-base">
+        Trabajamos también con el interior del país, haciendo envíos con embalaje especial, cuidando siempre el producto, para despachar al transporte de conveniencia. Contáctanos...
+      </p>
+    </div>
+
+    <div class="max-w-3xl mx-auto">
+      <Carousel
+        images={inicioCarouselImages}
+        altPrefix="Trabajos realizados por Rollers del Plata"
+        aspectClass="h-[340px] sm:h-[460px] md:h-[520px]"
+      />
+    </div>
+  </section>
+
+  <!-- Variedad de Géneros (4 Cards) -->
+  <section class="bg-white py-14 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="font-heading text-2xl sm:text-3xl text-center text-[#212121] mb-10">
+        Contamos con variedad de colores y texturas en nuestros géneros
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        {generos.map((item) => (
+          <div class="flex flex-col sm:flex-row gap-6 items-start bg-[#eceff1]/60 p-5 rounded border border-slate-200 hover:shadow-md transition">
+            <a href={item.href} class="w-full sm:w-52 shrink-0 overflow-hidden rounded">
+              <img
+                src={item.image}
+                alt={item.title}
+                loading="lazy"
+                decoding="async"
+                class="w-full h-52 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </a>
+            <div class="flex flex-col justify-between flex-1 space-y-3">
+              <div>
+                <h3 class="font-heading text-xl font-bold text-[#212121] mb-2">
+                  {item.title}
+                </h3>
+                <p class="text-sm sm:text-[15px] text-[#212121]/90 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+              <a
+                href={item.href}
+                class="inline-flex items-center text-sm font-semibold text-[#212121] hover:underline pt-1"
+              >
+                &lt;-- Conoce mas...
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Motorización Section -->
+  <section class="bg-[#b0bec5] py-12 px-4 text-center">
+    <div class="max-w-4xl mx-auto space-y-4">
+      <h2 class="font-heading text-2xl sm:text-3xl text-[#212121]">
+        Trabajamos con los mejores motores
+      </h2>
+      <p class="text-sm sm:text-base text-[#212121] max-w-2xl mx-auto leading-relaxed">
+        Soluciones inteligentes, motorización para cortinas roller, a control remoto, a tecla, para domótica o con Inteo, que permite controlar desde tu Smartphone.
+      </p>
+      <div class="pt-3">
+        <a
+          href="/accionamientos/motorizado"
+          class="inline-block bg-white text-[#212121] font-sans text-sm font-semibold px-6 py-2.5 rounded shadow-sm hover:bg-[#eceff1] transition"
+        >
+          Ver accionamientos motorizados
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comercios / Profesionales / Showroom CTA -->
+  <section class="bg-[#eceff1] py-14 px-4 text-center">
+    <div class="max-w-3xl mx-auto space-y-5">
+      <h2 class="font-heading text-2xl sm:text-3xl text-[#212121]">
+        Tenes un comercio, sos profesional con especialidad en decoración o tenes un showroom...
+      </h2>
+      <p class="text-sm sm:text-base text-[#212121]">
+        Envía un correo a{' '}
+        <a href="mailto:rollersdelplata@gmail.com" class="underline font-semibold">
+          rollersdelplata@gmail.com
+        </a>{' '}
+        para obtener más información sobre nuestros productos.
+      </p>
+      <div>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLScQtr5bRHQeyhfGdPwJv3cT52XyVB7zcLbaPfrTArxQxfwOjg/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-white border border-slate-300 text-[#212121] font-sans text-[15px] font-normal px-8 py-2.5 rounded shadow-sm hover:bg-[#b0bec5]/30 transition"
+        >
+          Enviar correo
+        </a>
+      </div>
+
+      <!-- Social Links -->
+      <div class="pt-6 flex items-center justify-center gap-5">
+        <a
+          href="https://www.instagram.com/rollers_del_plata/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram de Rollers del Plata"
+          class="w-11 h-11 rounded-full bg-[#212121] text-white flex items-center justify-center hover:bg-[#546e7a] transition"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+        <a
+          href="https://www.facebook.com/rollersdelplata/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook de Rollers del Plata"
+          class="w-11 h-11 rounded-full bg-[#212121] text-white flex items-center justify-center hover:bg-[#546e7a] transition"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

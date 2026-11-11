@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Rollers del Plata - Clientes">
+  <!-- Hero Banner -->
+  <section
+    class="relative h-[300px] sm:h-[340px] flex items-center justify-center text-center px-4 bg-cover bg-center border-b-8 border-[#b0bec5]"
+    style="background-image: url('/images/hero-inner.jpg');"
+  >
+    <div class="absolute inset-0 bg-[#212121]/55"></div>
+    <h1 class="relative z-10 font-heading text-5xl sm:text-6xl text-white">
+      Clientes
+    </h1>
+  </section>
+
+  <!-- Linktree & Contact Card -->
+  <section class="bg-[#eceff1] py-16 px-4">
+    <div class="max-w-lg mx-auto">
+      <a
+        href="https://linktr.ee/rollersdelplata"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block bg-[#262626] text-white rounded-lg shadow-md overflow-hidden hover:opacity-95 transition text-center p-8 space-y-4"
+      >
+        <img
+          src="/images/clientes/linktree-badge.jpg"
+          alt="Rollers del Plata"
+          class="w-28 h-28 mx-auto rounded-full object-contain"
+        />
+        <div class="space-y-1">
+          <h2 class="font-heading text-2xl font-bold">
+            Rollers del Plata | Instagram, Facebook | Linktree
+          </h2>
+          <p class="text-sm text-slate-300">
+            Fabricación de cortinas enrollables.
+          </p>
+        </div>
+      </a>
+    </div>
+  </section>
+</Layout>

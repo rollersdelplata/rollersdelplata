@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Carousel from '../../components/Carousel.astro';
+
+const images = [
+  '/images/catalogo/screen5-1.jpg',
+  '/images/catalogo/screen5-2.jpg',
+  '/images/catalogo/screen5-3.jpg',
+  '/images/catalogo/screen5-4.jpg',
+  '/images/catalogo/screen5-5.jpg',
+  '/images/catalogo/screen5-6.jpg',
+  '/images/catalogo/screen5-7.jpg',
+];
+---
+
+<Layout title="Rollers del Plata - Fotos cortinas Screen 5%">
+  <section class="bg-[#eceff1] py-10 px-4 border-b-4 border-[#b0bec5] text-center">
+    <h1 class="font-heading text-3xl sm:text-4xl text-[#212121]">
+      Fotos cortinas Screen 5%
+    </h1>
+    <p class="mt-2 text-sm sm:text-base text-[#212121]/80 max-w-2xl mx-auto">
+      Excelente visión al exterior durante el día, filtra los rayos del sol y optimiza los recursos de climatización frio/calor.
+    </p>
+  </section>
+
+  <section class="bg-white py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <Carousel
+        images={images}
+        altPrefix="Cortinas Roller Screen 5% - Rollers del Plata"
+        aspectClass="h-[360px] sm:h-[500px] md:h-[580px]"
+      />
+      <div class="mt-8 text-center">
+        <a
+          href="/catalogo"
+          class="inline-block bg-[#eceff1] text-[#212121] px-6 py-2.5 rounded text-sm font-semibold hover:bg-[#b0bec5] transition"
+        >
+          &larr; Volver a Catalogo
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

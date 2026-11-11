@@ -1,0 +1,167 @@
+---
+interface Props {
+  images: string[];
+  altPrefix?: string;
+  aspectClass?: string;
+  autoPlayMs?: number;
+}
+
+const {
+  images,
+  altPrefix = 'Cortinas Roller - Rollers del Plata',
+  aspectClass = 'h-[360px] sm:h-[480px] md:h-[560px]',
+  autoPlayMs = 4500,
+} = Astro.props;
+
+const carouselId = `carousel-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<div
+  id={carouselId}
+  data-carousel
+  data-autoplay={autoPlayMs}
+  class="relative w-full max-w-4xl mx-auto group select-none"
+  aria-label="Carrusel de imágenes"
+>
+  <!-- Viewport -->
+  <div class:list={['relative w-full overflow-hidden rounded bg-[#eceff1] shadow-sm', aspectClass]}>
+    {images.map((src, idx) => (
+      <div
+        data-slide={idx}
+        class:list={[
+          'absolute inset-0 transition-opacity duration-500 ease-in-out flex items-center justify-center bg-[#eceff1]',
+          idx === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none',
+        ]}
+      >
+        <img
+          src={src}
+          alt={`${altPrefix} - Imagen ${idx + 1}`}
+          loading={idx === 0 ? 'eager' : 'lazy'}
+          decoding="async"
+          class="w-full h-full object-contain sm:object-cover"
+        />
+      </div>
+    ))}
+
+    <!-- Previous Button -->
+    <button
+      type="button"
+      data-prev
+      aria-label="Anterior"
+      class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 focus:opacity-100 transition hover:bg-black/75"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <!-- Next Button -->
+    <button
+      type="button"
+      data-next
+      aria-label="Siguiente"
+      class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 focus:opacity-100 transition hover:bg-black/75"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Dots Indicator -->
+  <div class="flex items-center justify-center gap-2.5 mt-4">
+    {images.map((_, idx) => (
+      <button
+        type="button"
+        data-dot={idx}
+        aria-label={`Ir a la imagen ${idx + 1}`}
+        class:list={[
+          'w-2.5 h-2.5 rounded-full transition-all',
+          idx === 0 ? 'bg-[#212121] scale-110' : 'bg-[#b0bec5] hover:bg-[#8096a1]',
+        ]}
+      />
+    ))}
+  </div>
+</div>
+
+<script>
+  function initCarousels() {
+    const carousels = document.querySelectorAll('[data-carousel]');
+    carousels.forEach((root) => {
+      if ((root as HTMLElement).dataset.initialized === 'true') return;
+      (root as HTMLElement).dataset.initialized = 'true';
+
+      const slides = Array.from(root.querySelectorAll<HTMLElement>('[data-slide]'));
+      const dots = Array.from(root.querySelectorAll<HTMLElement>('[data-dot]'));
+      const prevBtn = root.querySelector<HTMLButtonElement>('[data-prev]');
+      const nextBtn = root.querySelector<HTMLButtonElement>('[data-next]');
+      const autoPlayMs = Number((root as HTMLElement).dataset.autoplay || 4500);
+
+      if (slides.length <= 1) return;
+
+      let current = 0;
+      let timer: ReturnType<typeof setInterval> | null = null;
+
+      const showSlide = (index: number) => {
+        current = (index + slides.length) % slides.length;
+        slides.forEach((slide, i) => {
+          if (i === current) {
+            slide.classList.remove('opacity-0', 'z-0', 'pointer-events-none');
+            slide.classList.add('opacity-100', 'z-10');
+          } else {
+            slide.classList.remove('opacity-100', 'z-10');
+            slide.classList.add('opacity-0', 'z-0', 'pointer-events-none');
+          }
+        });
+        dots.forEach((dot, i) => {
+          if (i === current) {
+            dot.classList.remove('bg-[#b0bec5]');
+            dot.classList.add('bg-[#212121]', 'scale-110');
+          } else {
+            dot.classList.remove('bg-[#212121]', 'scale-110');
+            dot.classList.add('bg-[#b0bec5]');
+          }
+        });
+      };
+
+      const startTimer = () => {
+        if (autoPlayMs > 0) {
+          stopTimer();
+          timer = setInterval(() => showSlide(current + 1), autoPlayMs);
+        }
+      };
+
+      const stopTimer = () => {
+        if (timer) {
+          clearInterval(timer);
+          timer = null;
+        }
+      };
+
+      prevBtn?.addEventListener('click', () => {
+        showSlide(current - 1);
+        startTimer();
+      });
+
+      nextBtn?.addEventListener('click', () => {
+        showSlide(current + 1);
+        startTimer();
+      });
+
+      dots.forEach((dot, idx) => {
+        dot.addEventListener('click', () => {
+          showSlide(idx);
+          startTimer();
+        });
+      });
+
+      root.addEventListener('mouseenter', stopTimer);
+      root.addEventListener('mouseleave', startTimer);
+
+      startTimer();
+    });
+  }
+
+  initCarousels();
+  document.addEventListener('astro:page-load', initCarousels);
+</script>

@@ -1,0 +1,51 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Rollers del Plata - Accionamientos">
+  <!-- Hero Banner -->
+  <section class="bg-[#333333] py-20 px-4 text-center border-b-8 border-[#b0bec5]">
+    <h1 class="font-heading text-4xl sm:text-6xl text-white tracking-wide">
+      Accionamientos
+    </h1>
+  </section>
+
+  <!-- Manual vs Motorizado Cards -->
+  <section class="bg-[#eceff1] py-16 px-4">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+      <!-- Manual -->
+      <a
+        href="/accionamientos/manual"
+        class="group bg-white p-6 rounded border border-slate-200 shadow-sm hover:shadow-md transition text-center space-y-5"
+      >
+        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-[#212121] group-hover:underline">
+          Manual
+        </h2>
+        <div class="overflow-hidden rounded">
+          <img
+            src="/images/accionamientos/card-manual.jpg"
+            alt="Accionamiento Manual"
+            class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+      </a>
+
+      <!-- Motorizado -->
+      <a
+        href="/accionamientos/motorizado"
+        class="group bg-white p-6 rounded border border-slate-200 shadow-sm hover:shadow-md transition text-center space-y-5"
+      >
+        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-[#212121] group-hover:underline">
+          Motorizado
+        </h2>
+        <div class="overflow-hidden rounded">
+          <img
+            src="/images/accionamientos/card-motorizado.jpg"
+            alt="Accionamiento Motorizado"
+            class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+      </a>
+    </div>
+  </section>
+</Layout>

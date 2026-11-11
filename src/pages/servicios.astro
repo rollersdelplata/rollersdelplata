@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const solucionesGallery = [
+  { image: '/images/servicios/img-4.jpg', label: 'Screen 5%' },
+  { image: '/images/servicios/img-5.jpg', label: 'Black out' },
+  { image: '/images/servicios/img-6.jpg', label: 'Screen 5%' },
+  { image: '/images/servicios/img-7.jpg', label: 'Black out Var- 4' },
+  { image: '/images/servicios/img-8.jpg', label: 'Screen 5% Anden' },
+  { image: '/images/servicios/img-9.jpg', label: 'Screen 5% Negro' },
+  { image: '/images/servicios/img-10.jpg', label: 'Nature' },
+  { image: '/images/servicios/img-11.jpg', label: 'Natter 7' },
+  { image: '/images/servicios/img-12.jpg', label: 'Screen + Black out' },
+];
+---
+
+<Layout title="Rollers del Plata - Servicios">
+  <!-- Header Section -->
+  <section class="bg-[#eceff1] py-12 px-4 border-b-4 border-[#b0bec5] text-center">
+    <h1 class="font-heading text-4xl sm:text-5xl text-[#212121]">
+      A tener en cuenta...
+    </h1>
+  </section>
+
+  <!-- Estudiar cual es la mejor opción... -->
+  <section class="bg-[#eceff1]/70 py-12 px-4">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+      <div class="space-y-5 text-[#212121]">
+        <h2 class="font-heading text-2xl sm:text-3xl">
+          Estudiar cual es la mejor opción...
+        </h2>
+        <p class="leading-relaxed text-sm sm:text-base">
+          A la hora de colocar cortinas se debe tener en cuenta el tipo de tela, tamaño de la abertura, ubicación de las ventanas y su accionamiento de apertura.
+        </p>
+        <p class="leading-relaxed text-sm sm:text-base">
+          También es importante definir el uso o la función que se requiera de las mismas, sea oscurecer el ambiente, decorar, lograr privacidad, buscar el paso de luz natural y una vez definido el genero a utilizar, se debe evaluar donde y como instalar.
+        </p>
+        <p class="leading-relaxed text-sm sm:text-base">
+          Las cortinas roller se adaptan muy bien a cualquier tipo de estilo de decoración.
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-white p-3 rounded shadow-sm border border-slate-200">
+          <img
+            src="/images/servicios/img-1.jpg"
+            alt="Screen 5%"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-64 sm:h-72 object-cover rounded"
+          />
+          <p class="text-center text-sm font-semibold text-[#212121] mt-2">Screen 5%</p>
+        </div>
+
+        <div class="bg-white p-4 rounded shadow-sm border border-slate-200">
+          <img
+            src="/images/servicios/img-2.jpg"
+            alt="Tipo de caída y posición de accionamiento"
+            loading="lazy"
+            decoding="async"
+            class="w-full object-contain rounded"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tenemos soluciones... -->
+  <section class="bg-white py-14 px-4">
+    <div class="max-w-6xl mx-auto space-y-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div class="space-y-4">
+          <h2 class="font-heading text-2xl sm:text-3xl text-[#212121]">
+            Tenemos soluciones...
+          </h2>
+          <p class="text-[#212121]/90 leading-relaxed text-sm sm:text-base">
+            Contamos con distintas alternativas de sistemas, cada uno se adecua a la medida y peso de la cortina.
+          </p>
+          <p class="text-[#212121]/90 leading-relaxed text-sm sm:text-base">
+            Ofrecemos soportes simples, dobles, intermedios y extensibles para facilitar la instalación de las cortinas en color blanco o negro. Podes conocerlos en el sector de{' '}
+            <a href="/accionamientos" class="underline font-semibold hover:text-[#546e7a]">
+              accionamientos...
+            </a>
+          </p>
+        </div>
+        <div class="bg-[#eceff1] p-3 rounded border border-slate-200">
+          <img
+            src="/images/servicios/img-3.jpg"
+            alt="Black out"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-64 sm:h-72 object-cover rounded"
+          />
+          <p class="text-center text-sm font-semibold text-[#212121] mt-2">Black out</p>
+        </div>
+      </div>
+
+      <!-- 3x3 Labeled Gallery -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {solucionesGallery.map((item) => (
+          <div class="bg-[#eceff1]/60 p-3 rounded border border-slate-200 shadow-sm flex flex-col">
+            <img
+              src={item.image}
+              alt={item.label}
+              loading="lazy"
+              decoding="async"
+              class="w-full h-64 object-cover rounded"
+            />
+            <p class="text-center text-sm font-semibold text-[#212121] mt-2.5">
+              {item.label}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Únete al equipo de distribuidores -->
+  <section class="bg-[#b0bec5] py-12 px-4 text-center">
+    <div class="max-w-3xl mx-auto space-y-4">
+      <h3 class="font-heading text-2xl sm:text-3xl text-[#212121]">
+        Únete al equipo de distribuidores
+      </h3>
+      <p class="text-sm sm:text-base text-[#212121]">
+        Solicita por mail a{' '}
+        <a href="mailto:rollersdelplata@gmail.com" class="underline font-semibold">
+          rollersdelplata@gmail.com
+        </a>{' '}
+        información
+      </p>
+      <div class="pt-2">
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdhVnBivfVzU_zPp38vX94uBIT_wRDTil7sR6UeitoWzpkGmg/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-white text-[#212121] font-sans text-[15px] px-8 py-2.5 rounded shadow-sm hover:bg-[#eceff1] transition"
+        >
+          Enviar solicitud
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

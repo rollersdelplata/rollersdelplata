@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Carousel from '../../components/Carousel.astro';
+
+const images = [
+  '/images/catalogo/traslucidas-1.jpg',
+  '/images/catalogo/traslucidas-2.jpg',
+  '/images/catalogo/traslucidas-3.jpg',
+  '/images/catalogo/traslucidas-4.jpg',
+  '/images/catalogo/traslucidas-5.jpg',
+  '/images/catalogo/traslucidas-6.jpg',
+  '/images/catalogo/traslucidas-7.jpg',
+];
+---
+
+<Layout title="Rollers del Plata - Fotos cortinas Traslúcidas">
+  <section class="bg-[#eceff1] py-10 px-4 border-b-4 border-[#b0bec5] text-center">
+    <h1 class="font-heading text-3xl sm:text-4xl text-[#212121]">
+      Fotos cortinas Traslúcidas
+    </h1>
+    <p class="mt-2 text-sm sm:text-base text-[#212121]/80 max-w-2xl mx-auto">
+      Permite alcanzar la intimidad y privacidad deseada, aporta decoración, elegancia y luminosidad suave.
+    </p>
+  </section>
+
+  <section class="bg-white py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <Carousel
+        images={images}
+        altPrefix="Cortinas Roller Traslúcidas - Rollers del Plata"
+        aspectClass="h-[360px] sm:h-[500px] md:h-[580px]"
+      />
+      <div class="mt-8 text-center">
+        <a
+          href="/catalogo"
+          class="inline-block bg-[#eceff1] text-[#212121] px-6 py-2.5 rounded text-sm font-semibold hover:bg-[#b0bec5] transition"
+        >
+          &larr; Volver a Catalogo
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

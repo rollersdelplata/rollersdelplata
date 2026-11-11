@@ -1,0 +1,64 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Rollers del Plata - Motorizado">
+  <!-- Hero Banner -->
+  <section
+    class="relative h-[300px] sm:h-[340px] flex items-center justify-center text-center px-4 bg-cover bg-center border-b-8 border-[#b0bec5]"
+    style="background-image: url('/images/hero-inner.jpg');"
+  >
+    <div class="absolute inset-0 bg-[#212121]/55"></div>
+    <h1 class="relative z-10 font-heading text-5xl sm:text-6xl text-white">
+      Motorizado
+    </h1>
+  </section>
+
+  <!-- Somfy Flyers Section -->
+  <section class="bg-[#eceff1] py-14 px-4">
+    <div class="max-w-5xl mx-auto space-y-10">
+      <!-- Top Row: Somfy Logo + Inteo Smart Home -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+        <div class="md:col-span-4 flex flex-col gap-6">
+          <img
+            src="/images/accionamientos/motorizado-1.jpg"
+            alt="Somfy Argentina"
+            class="w-full rounded shadow-sm bg-white p-2 object-contain"
+          />
+          <img
+            src="/images/accionamientos/motorizado-2.jpg"
+            alt="Somfy Inteo Smartphone Control"
+            class="w-full rounded shadow-sm bg-white p-2 object-contain"
+          />
+        </div>
+        <div class="md:col-span-8">
+          <img
+            src="/images/accionamientos/motorizado-3.jpg"
+            alt="Sistema de automatización Somfy Inteo"
+            class="w-full rounded shadow-sm bg-white"
+          />
+        </div>
+      </div>
+
+      <!-- Sonesse 40 / Sonesse 50 Flyer -->
+      <div class="max-w-3xl mx-auto">
+        <img
+          src="/images/accionamientos/motorizado-4.jpg"
+          alt="Motores Somfy Sonesse 40 y Sonesse 50 Ultra Silenciosos"
+          loading="lazy"
+          class="w-full rounded shadow-sm bg-white"
+        />
+      </div>
+
+      <!-- Tube by Somfy 6/28-40 & 10/28-50 Flyer -->
+      <div class="max-w-3xl mx-auto">
+        <img
+          src="/images/accionamientos/motorizado-5.jpg"
+          alt="Motores Tube by Somfy 6/28-40 y 10/28-50"
+          loading="lazy"
+          class="w-full rounded shadow-sm bg-white"
+        />
+      </div>
+    </div>
+  </section>
+</Layout>
