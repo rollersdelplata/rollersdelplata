@@ -129,6 +129,19 @@ const accionamientosSublinks = [
         </div>
       </div>
 
+      <!-- Descargables -->
+      <a
+        href="/descargables"
+        class:list={[
+          'px-4 h-full flex items-center text-[15px] transition border-b-4',
+          isActive('/descargables')
+            ? 'border-[#b0bec5] text-[#212121]'
+            : 'border-transparent text-[#212121]/80 hover:text-[#212121]',
+        ]}
+      >
+        Descargables
+      </a>
+
       <!-- Clientes -->
       <a
         href="/clientes"
@@ -188,6 +201,9 @@ const accionamientosSublinks = [
         ))}
       </div>
     </div>
+    <a href="/descargables" class="block py-2 px-3 rounded text-base font-medium text-[#212121] hover:bg-[#eceff1]">
+      Descargables
+    </a>
     <a href="/clientes" class="block py-2 px-3 rounded text-base font-medium text-[#212121] hover:bg-[#eceff1]">
       Clientes
     </a>

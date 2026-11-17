@@ -1,0 +1,155 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const documentos = [
+  {
+    id: 'catalogo-2026',
+    titulo: 'CATALOGO Rollers del Plata - 2026',
+    archivoUrl: '/docs/CATALOGO-Rollers-del-Plata-2026.pdf',
+    nombreDescarga: 'CATALOGO Rollers del Plata - 2026.pdf',
+    caratulaUrl: '/images/descargables/cover-catalogo-2026.png',
+  },
+  {
+    id: 'manual-tecnico',
+    titulo: 'Manual Tecnico Rollers del Plata',
+    archivoUrl: '/docs/Manual-Tecnico-Rollers-del-Plata.pdf',
+    nombreDescarga: 'Manual Tecnico Rollers del Plata.pdf',
+    caratulaUrl: '/images/descargables/cover-manual-tecnico.png',
+  },
+  {
+    id: 'manual-instalacion',
+    titulo: 'Manual de Instalación Rollers del Plata',
+    archivoUrl: '/docs/Manual-de-Instalacion-Rollers-del-Plata.pdf',
+    nombreDescarga: 'Manual de Instalación Rollers del Plata.pdf',
+    caratulaUrl: '/images/descargables/cover-manual-instalacion.png',
+  },
+  {
+    id: 'tabla-medidas',
+    titulo: 'TABLA DE MEDIDAS 2026',
+    archivoUrl: '/docs/TABLA-DE-MEDIDAS-2026.pdf',
+    nombreDescarga: 'TABLA DE MEDIDAS 2026.pdf',
+    caratulaUrl: '/images/descargables/cover-tabla-medidas.png',
+  },
+];
+---
+
+<Layout title="Rollers del Plata - Descargables">
+  <!-- Hero Banner -->
+  <section
+    class="relative h-[300px] sm:h-[340px] flex items-center justify-center text-center px-4 bg-cover bg-center border-b-8 border-[#b0bec5]"
+    style="background-image: url('/images/hero-inner.jpg');"
+  >
+    <div class="absolute inset-0 bg-[#212121]/55"></div>
+    <h1 class="relative z-10 font-heading text-5xl sm:text-6xl text-white">
+      Descargables
+    </h1>
+  </section>
+
+  <!-- Grilla de Documentos PDF -->
+  <section class="bg-[#eceff1] py-14 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto space-y-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {documentos.map((doc) => (
+          <div class="rounded-lg bg-white border border-slate-300 shadow-sm overflow-hidden flex flex-col">
+            <button
+              type="button"
+              data-pdf-url={doc.archivoUrl}
+              data-pdf-title={doc.titulo}
+              class="btn-ver-pdf bg-slate-100 border-b border-slate-200 p-4 flex items-center justify-center h-64 hover:bg-slate-200/70 transition cursor-pointer"
+              title={`Ver ${doc.titulo}`}
+            >
+              <img
+                src={doc.caratulaUrl}
+                alt={doc.titulo}
+                class="h-full w-auto object-contain rounded shadow-sm bg-white"
+              />
+            </button>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <h2 class="font-heading text-base font-bold text-[#212121] text-center">
+                {doc.titulo}
+              </h2>
+              <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-center gap-2.5 text-xs font-semibold">
+                <button
+                  type="button"
+                  data-pdf-url={doc.archivoUrl}
+                  data-pdf-title={doc.titulo}
+                  class="btn-ver-pdf px-3.5 py-2 rounded border border-slate-300 hover:bg-[#eceff1] text-[#212121] transition cursor-pointer"
+                >
+                  Ver PDF
+                </button>
+                <a
+                  href={doc.archivoUrl}
+                  download={doc.nombreDescarga}
+                  class="px-3.5 py-2 rounded bg-[#262626] hover:bg-[#212121] text-white transition"
+                >
+                  Descargar PDF
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Visor PDF Integrado -->
+      <div id="visor-pdf-container" class="hidden bg-white rounded-lg border border-slate-300 shadow-md overflow-hidden">
+        <div class="bg-[#262626] text-white px-5 py-3 flex flex-wrap items-center justify-between gap-3">
+          <span id="visor-pdf-titulo" class="font-heading text-base font-bold">
+            CATALOGO Rollers del Plata - 2026
+          </span>
+          <div class="flex items-center gap-2.5 text-xs">
+            <a
+              id="visor-pdf-nueva-pestana"
+              href="/docs/CATALOGO-Rollers-del-Plata-2026.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-3 py-1.5 rounded bg-white/15 hover:bg-white/25 text-white font-semibold transition"
+            >
+              Abrir en pantalla completa
+            </a>
+            <button
+              type="button"
+              id="btn-cerrar-visor"
+              class="px-3 py-1.5 rounded bg-white text-[#212121] font-semibold hover:bg-slate-200 transition cursor-pointer"
+            >
+              Cerrar visor
+            </button>
+          </div>
+        </div>
+        <iframe
+          id="visor-pdf-iframe"
+          src=""
+          title="Visor PDF Rollers del Plata"
+          class="w-full h-[78vh] border-0 bg-slate-100"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const botonesVer = document.querySelectorAll('.btn-ver-pdf');
+    const contenedorVisor = document.getElementById('visor-pdf-container');
+    const iframeVisor = document.getElementById('visor-pdf-iframe') as HTMLIFrameElement | null;
+    const tituloVisor = document.getElementById('visor-pdf-titulo');
+    const linkNuevaPestana = document.getElementById('visor-pdf-nueva-pestana') as HTMLAnchorElement | null;
+    const btnCerrar = document.getElementById('btn-cerrar-visor');
+
+    botonesVer.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const url = btn.getAttribute('data-pdf-url');
+        const title = btn.getAttribute('data-pdf-title');
+        if (!url || !contenedorVisor || !iframeVisor) return;
+        iframeVisor.src = url;
+        if (tituloVisor && title) tituloVisor.textContent = title;
+        if (linkNuevaPestana) linkNuevaPestana.href = url;
+        contenedorVisor.classList.remove('hidden');
+        contenedorVisor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    btnCerrar?.addEventListener('click', () => {
+      if (!contenedorVisor || !iframeVisor) return;
+      iframeVisor.src = '';
+      contenedorVisor.classList.add('hidden');
+    });
+  </script>
+</Layout>
